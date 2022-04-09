@@ -77,6 +77,7 @@ main {
   margin-left: 20px;
   list-style: none;
   height: 32px;
+  /* gap: 1450px; */
   gap: 1200px;
   
 }
@@ -112,12 +113,12 @@ main {
 }
 
 
-.nova-tarefa input{
+ .form-tarefas input{
   margin-top: 32px;
   width: 600px;
 }
  
-.nova-tarefa input::placeholder{
+ .form-tarefas input::placeholder{
   text-align: center;
 }
 
