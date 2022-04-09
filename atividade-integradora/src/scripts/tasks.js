@@ -13,11 +13,23 @@ let formCadastro = document.querySelector(".form_cadastro");
 window.addEventListener("load", (e) => console.log(e));
 const API_URL = "https://ctd-todo-api.herokuapp.com/v1";
 
+
 function criarli() {
   let li = document.createElement("li");
   ul.appendChild(li);
   li.classList.add("erro");
   return li;
+}
+
+function configuracoes(body) {
+  let configuracoes = {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-type": "application/json",
+    },
+  };
+  return configuracoes;
 }
 
 // Logar usario dentro da api e validaçao dos campos de login e senha
@@ -51,17 +63,6 @@ if (formLogin) {
 }
 
 // Criar uma novo usuário e Validaçao dos campos de cadastro
-
-function configuracoes(body) {
-  let configuracoes = {
-    method: "POST",
-    body: JSON.stringify(body),
-    headers: {
-      "Content-type": "application/json",
-    },
-  };
-  return configuracoes;
-}
 
 function criarUsuario(e) {
   e.preventDefault();

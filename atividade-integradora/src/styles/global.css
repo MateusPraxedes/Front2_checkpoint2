@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Material+Icons%7CMaterial+Icons+Outlined%7CMaterial+Icons+Two+Tone%7CMaterial+Icons+Round%7CMaterial+Icons+Sharp%27");
 * {
   padding: 0;
   margin: 0;
@@ -18,7 +19,7 @@ main {
   height: 80vh;
 }
 
-form {
+.cadastroLogin {
   color: white;
   background-color: rgb(26, 25, 27);
   padding: 24px;
@@ -34,6 +35,7 @@ form {
 
   input{
     border-radius: 12px;
+    height: 28px;
   }
 
 .btn_div{
@@ -60,4 +62,87 @@ form {
     color: rgb(16, 133, 216);
     font-weight: bold;
   }
+
+  .main-header {
+    color: white;
+    background-color: #0c0c0c;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.main-header nav ul{
+  
+  display: flex;
+  margin-left: 20px;
+  list-style: none;
+  height: 32px;
+  gap: 1200px;
+  
+}
+
+.nomeUsuario{
+  font-size: 14px;
+  color: rgb(30, 134, 219);
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.btn-finalizar{
+  color: white;
+  margin-top: 1px;
+  width: 130px;
+  height: 28px;
+  background-color: rgb(241, 38, 16);
+  border-radius: 50px; 
+}
+
+.main-header a{
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+.input-tasks{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.nova-tarefa input{
+  margin-top: 32px;
+  width: 600px;
+}
+ 
+.nova-tarefa input::placeholder{
+  text-align: center;
+}
+
+.material-icons-outlined{
+  color: rgb(30, 134, 219);
+  font-weight: bold;
+  height: 28px;
+  margin: 0 auto;
+  align-items: center;
+  /* border-radius: 40px; */
+  margin-top: 32px;
+}
+
+.not-done{
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.tarefas{
+  margin-left: 10px;
+}
+.pendentes{
+  height: 300px;
+  margin-top: 24px;
+}
+
 
