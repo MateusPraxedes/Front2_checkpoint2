@@ -14,30 +14,36 @@
       <nav>
         <ul>
           <li class="nomeUsuario">Nome do usuário</li>
-          <li> <button class="btn-finalizar"><a href="index.html">Finalizar sessão</a></button></li>
+          <li>
+            <button class="btn-finalizar">
+              <a href="index.html">Finalizar sessão</a>
+            </button>
+          </li>
         </ul>
       </nav>
     </header>
-     <div class="input-tasks">
-    <form class="form-tarefas">
-      <div class="not-done">
-      <input class="nova-tarefas" type="text" placeholder="Nova tarefa" />
-      <button type="submit" class="material-icons-outlined">add_circle_outline</button>
-      </div>
-    </form>
-  </div>
-     
-  <div class="tarefas"> 
-    <div class="pendentes">
-    <h1>Tarefas Pedentes</h1>
-    <ul class="tarefas-pendentes"></ul>
+    <div class="input-tasks">
+      <form class="form-tarefas">
+        <div class="not-done">
+          <input class="nova-tarefas" type="text" placeholder="Nova tarefa" />
+          <button type="submit" class="material-icons-outlined">
+            add_circle_outline
+          </button>
+        </div>
+      </form>
     </div>
 
-    <div>
-      <h1 class="titulo-terminadas">Tarefas Terminadas</h1>
-      <ul class="tarefas-terminadas"></ul>
+    <div class="tarefas">
+      <div class="pendentes">
+        <h1>Tarefas Pedentes</h1>
+        <ul class="tarefas-pendentes"></ul>
+      </div>
+
+      <div>
+        <h1 class="titulo-terminadas">Tarefas Terminadas</h1>
+        <ul class="tarefas-terminadas"></ul>
+      </div>
     </div>
-  </div>
     <script src="..//src/scripts/tasks.js"></script>
   </body>
 </html>

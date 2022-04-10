@@ -144,17 +144,16 @@ function AtualizarTarefa(id) {
 
 // Obter um determinada tarefa
 
-function obterTarefa(id){
+function obterTarefa(id) {
   fetch(`${API_URL}/tasks{${id}}`)
-  .then((r) => r.json())
-  .then((r) => console.log(r));
+    .then((r) => r.json())
+    .then((r) => console.log(r));
 }
 
 // Listar tatefas
 
-function listarTarefas(){
+function listarTarefas() {
   fetch(`${API_URL}/tasks`)
-  .then((r) => r.json())
-  .then((r) => console.log(r));
+    .then((r) => r.json())
+    .then((r) => console.log(r));
 }
-

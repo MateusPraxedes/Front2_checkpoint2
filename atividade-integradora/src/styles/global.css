@@ -1,24 +1,23 @@
 @import url("https://fonts.googleapis.com/css?family=Material+Icons%7CMaterial+Icons+Outlined%7CMaterial+Icons+Two+Tone%7CMaterial+Icons+Round%7CMaterial+Icons+Sharp%27");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   /* background-color: rgb(60, 59, 59); */
   font-size: 16px;
   background-image: url("https://miro.medium.com/max/1400/1*a2a7mb3U47iw5SwWtoL7FQ.jpeg");
   background-repeat: no-repeat;
-  background-size: cover; 
-
+  background-size: cover;
 }
 
-.title{
- font-weight: bold;
+.title {
+  font-weight: bold;
 }
 main {
-  
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -40,104 +39,99 @@ main {
   gap: 12px;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 7px;
-  }
+}
 
-  input{
-    border-radius: 12px;
-    height: 28px;
-  }
+input {
+  border-radius: 12px;
+  height: 28px;
+}
 
-.btn_div{
+.btn_div {
   margin-top: 20px;
   margin: auto;
   padding-top: 10px;
   align-items: center;
 }
 
-.btn{
+.btn {
   width: 100px;
   color: white;
   background-color: rgb(30, 134, 219);
   border-radius: 50px;
 }
 
-  .ingressar a{
-    color: white;
-    /* text-decoration: none; */
-  }
-
-.erro{
-    list-style: none;
-    color: rgb(16, 133, 216);
-    font-weight: bold;
-  }
-
-  .form_cadastro input::placeholder{
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .main-header {
-    color: white;
-    background-color: #0c0c0c;
-    width: 100%;
-    margin: 0 auto;
+.ingressar a {
+  color: white;
+  /* text-decoration: none; */
 }
 
+.erro {
+  list-style: none;
+  color: rgb(16, 133, 216);
+  font-weight: bold;
+}
 
-.main-header nav ul{
-  
+.form_cadastro input::placeholder {
+  text-align: center;
+  font-weight: bold;
+}
+
+.main-header {
+  color: white;
+  background-color: #0c0c0c;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.main-header nav ul {
   display: flex;
   margin-left: 20px;
   list-style: none;
   height: 32px;
   /* gap: 1450px; */
   gap: 1200px;
-  
 }
 
-.nomeUsuario{
+.nomeUsuario {
   font-size: 14px;
   color: rgb(30, 134, 219);
   font-weight: bold;
   margin-top: 6px;
 }
 
-.btn-finalizar{
+.btn-finalizar {
   color: white;
   margin-top: 1px;
   width: 130px;
   height: 28px;
   background-color: rgb(241, 38, 16);
-  border-radius: 50px; 
+  border-radius: 50px;
 }
 
-.main-header a{
+.main-header a {
   color: white;
   text-decoration: none;
   font-weight: bold;
 }
 
-
-.input-tasks{
+.input-tasks {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-
- .form-tarefas input{
+.form-tarefas input {
   margin-top: 32px;
   width: 600px;
 }
- 
- .form-tarefas input::placeholder{
+
+.form-tarefas input::placeholder {
   text-align: center;
   font-weight: bold;
 }
 
-.material-icons-outlined{
+.material-icons-outlined {
   color: rgb(30, 134, 219);
   font-weight: bold;
   height: 28px;
@@ -147,19 +141,17 @@ main {
   margin-top: 32px;
 }
 
-.not-done{
+.not-done {
   display: flex;
   align-items: center;
   gap: 2px;
 }
 
-.tarefas{
+.tarefas {
   margin-left: 62px;
   font-weight: bold;
 }
-.pendentes{
+.pendentes {
   height: 300px;
   margin-top: 24px;
 }
-
-
