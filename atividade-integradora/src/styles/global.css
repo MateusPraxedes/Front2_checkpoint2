@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Material+Icons%7CMaterial+Icons+Outlined%7CMaterial+Icons+Two+Tone%7CMaterial+Icons+Round%7CMaterial+Icons+Sharp%27");
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 * {
   padding: 0;
   margin: 0;
@@ -12,6 +14,7 @@ body {
   background-image: url("https://miro.medium.com/max/1400/1*a2a7mb3U47iw5SwWtoL7FQ.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: 'Roboto', sans-serif;
 }
 
 .title {
@@ -46,15 +49,16 @@ input {
   height: 28px;
 }
 
-.btn_div {
+/* .btn_div {
   margin-top: 20px;
   margin: auto;
   padding-top: 10px;
   align-items: center;
-}
+} */
 
 .btn {
-  width: 100px;
+  width: 150px;
+  height: 28px;
   color: white;
   background-color: rgb(30, 134, 219);
   border-radius: 50px;
@@ -89,7 +93,7 @@ input {
   list-style: none;
   height: 32px;
   /* gap: 1450px; */
-  gap: 1200px;
+  gap: 1170px;
 }
 
 .nomeUsuario {
@@ -102,7 +106,7 @@ input {
 .btn-finalizar {
   color: white;
   margin-top: 1px;
-  width: 130px;
+  width: 150px;
   height: 28px;
   background-color: rgb(241, 38, 16);
   border-radius: 50px;
@@ -148,10 +152,21 @@ input {
 }
 
 .tarefas {
+  color: rgb(246, 243, 249);
+  display: flex;
+  gap: 700px;
+  margin-top: 24px;
   margin-left: 62px;
   font-weight: bold;
 }
-.pendentes {
-  height: 300px;
-  margin-top: 24px;
+
+
+.tarefas-pendentes{
+  list-style: none;
+}
+.tarefas-pendentes li {
+  color: rgb(30, 134, 219);
+  font-size: 29px;
+  font-weight: bold;
+  margin-top: 20px;
 }

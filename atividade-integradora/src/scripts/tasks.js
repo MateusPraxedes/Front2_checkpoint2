@@ -14,7 +14,7 @@ function criarli() {
   return li;
 }
 
-function configuracoes(method, body) {
+function configuracoesSemJwt(method, body) {
   let configuracoes = {
     method: method,
     body: JSON.stringify(body),
@@ -25,7 +25,19 @@ function configuracoes(method, body) {
   return configuracoes;
 }
 
-// Logar usario dentro da api e validaçao dos campos de login e senha
+function configuracoesComJwt(method, body, token) {
+  let configuracoes = {
+    method: method,
+    body: JSON.stringify(body),
+    headers: {
+      authorization: `${token}`,
+      "Content-type": "application/json",
+    },
+  };
+  return configuracoes;
+}
+
+// Logar usuário dentro da api e validaçao dos campos de login e senha
 let ul = document.createElement("ul");
 
 function logarUsuario(e) {
@@ -46,10 +58,28 @@ function logarUsuario(e) {
     password: senha.value,
   };
 
-  fetch(`${API_URL}/users/login`, configuracoes("POST", body))
+  
+
+  fetch(`${API_URL}/users/login`, configuracoesSemJwt("POST", body))
     .then((r) => r.json())
-    .then((r) => console.log(r));
+    .then((r) => {
+      if(r == "Contraseña incorrecta" ){
+        alert("Senha incorreta")
+      }
+      else if(r == "El usuario no existe" ){
+        alert("Usuario não encontrado")
+      }
+      else if(r == "Error del servidor"){
+        alert("Erro no servidor")
+      } else
+      console.log(r.jwt)
+      sessionStorage.setItem("JWT", r.jwt)
+      window.location.href = "tarefas.html"
+      
+    });
 }
+
+
 
 if (formLogin) {
   formLogin.addEventListener("submit", logarUsuario);
@@ -91,7 +121,7 @@ function criarUsuario(e) {
     password: senhaCadastro.value,
   };
 
-  fetch(`${API_URL}/users`, configuracoes("POST", body))
+  fetch(`${API_URL}/users`, configuracoesSemJwt("POST", body))
     .then((r) => r.json())
     .then((r) => console.log(r));
 }
@@ -104,6 +134,7 @@ if (formCadastro) {
 
 let novaTarefa = document.querySelector(".nova-tarefas");
 let formNovaTarefas = document.querySelector(".form-tarefas");
+let tarefaPedentes = document.querySelector(".tarefas-pendentes")
 
 function criarTarefa(e) {
   e.preventDefault();
@@ -112,14 +143,21 @@ function criarTarefa(e) {
     completed: false,
   };
 
-  fetch(`${API_URL}/tasks`, configuracoes("POST", body))
+  fetch(`${API_URL}/tasks`, configuracoesComJwt("POST", body, sessionStorage.getItem("JWT")))
     .then((r) => r.json())
-    .then((r) => console.log(r));
+    .then((r) => {
+      console.log(r)
+      let li = document.createElement("li")
+      li.innerText =`- ${r.description}`
+      tarefaPedentes.appendChild(li)
+      });
 }
 
 if (formNovaTarefas) {
   formNovaTarefas.addEventListener("submit", criarTarefa);
 }
+
+
 
 // Deleter tarefa
 
@@ -137,7 +175,7 @@ function AtualizarTarefa(id) {
     completed: false,
   };
 
-  fetch(`${API_URL}/tasks{${id}}`, configuracoes("PUT", body))
+  fetch(`${API_URL}/tasks{${id}}`, configuracoesComJwt("PUT", body))
     .then((r) => r.json())
     .then((r) => console.log(r));
 }
@@ -150,10 +188,47 @@ function obterTarefa(id) {
     .then((r) => console.log(r));
 }
 
-// Listar tatefas
+// Listar tarefas
 
-function listarTarefas() {
-  fetch(`${API_URL}/tasks`)
+function listarTarefas(token) {
+  fetch(`${API_URL}/tasks`,authorization(token))
     .then((r) => r.json())
-    .then((r) => console.log(r));
+    .then((r) => {
+      console.log(r)
+    r.forEach(tarefa => {
+      let li = document.createElement("li")
+      li.innerText =`- ${tarefa.description}`
+      tarefaPedentes.appendChild(li)
+      
+    });});
 }
+
+listarTarefas(sessionStorage.getItem("JWT"))
+
+
+// Obter informações de usuário
+
+let nomeUsuario = document.querySelector(".nomeUsuario")
+
+function authorization(token) {
+  let getMe = {
+    headers: {
+      authorization: `${token}`,
+    },
+  };
+   return getMe}
+
+
+function informacoesUsuario(token) {
+  fetch(`${API_URL}/users/getMe`, authorization(token))
+    .then((r) => r.json())
+    .then((r) => {
+      console.log(r)
+      nomeUsuario.innerText = r.firstName;
+    });
+}
+
+
+informacoesUsuario(sessionStorage.getItem("JWT"))
+
+
