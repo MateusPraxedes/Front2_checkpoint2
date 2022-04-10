@@ -6,10 +6,17 @@
 }
 
 body{
-  background-color: rgb(60, 59, 59);
+  /* background-color: rgb(60, 59, 59); */
   font-size: 16px;
+  background-image: url("https://miro.medium.com/max/1400/1*a2a7mb3U47iw5SwWtoL7FQ.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover; 
+
 }
 
+.title{
+ font-weight: bold;
+}
 main {
   
   display: flex;
@@ -20,17 +27,19 @@ main {
 }
 
 .cadastroLogin {
+  position: relative;
   color: white;
-  background-color: rgb(26, 25, 27);
+  /* background-color: rgb(26, 25, 27); */
   padding: 24px;
   width: 404px;
   margin-left: 12px;
-  backdrop-filter: blur(20px);
   border-radius: 10px;
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 7px;
   }
 
   input{
@@ -125,6 +134,7 @@ main {
  
  .form-tarefas input::placeholder{
   text-align: center;
+  font-weight: bold;
 }
 
 .material-icons-outlined{
@@ -144,7 +154,8 @@ main {
 }
 
 .tarefas{
-  margin-left: 10px;
+  margin-left: 62px;
+  font-weight: bold;
 }
 .pendentes{
   height: 300px;
