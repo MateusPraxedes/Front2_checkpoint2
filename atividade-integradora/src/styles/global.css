@@ -63,6 +63,11 @@ main {
     font-weight: bold;
   }
 
+  .form_cadastro input::placeholder{
+    text-align: center;
+    font-weight: bold;
+  }
+
   .main-header {
     color: white;
     background-color: #0c0c0c;
