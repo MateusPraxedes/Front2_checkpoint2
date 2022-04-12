@@ -5,6 +5,7 @@ let body = document.querySelector("body");
 let btn = document.querySelector("#btn");
 
 window.addEventListener("load", (e) => console.log(e));
+
 const API_URL = "https://ctd-todo-api.herokuapp.com/v1";
 
 function criarli() {
@@ -58,28 +59,21 @@ function logarUsuario(e) {
     password: senha.value,
   };
 
-  
-
   fetch(`${API_URL}/users/login`, configuracoesSemJwt("POST", body))
     .then((r) => r.json())
     .then((r) => {
-      if(r == "Contraseña incorrecta" ){
-        alert("Senha incorreta")
-      }
-      else if(r == "El usuario no existe" ){
-        alert("Usuario não encontrado")
-      }
-      else if(r == "Error del servidor"){
-        alert("Erro no servidor")
-      } else
-      console.log(r.jwt)
-      sessionStorage.setItem("JWT", r.jwt)
-      window.location.href = "tarefas.html"
-      
+      console.log(r)
+      if (r == "Contraseña incorrecta") {
+        alert("Senha incorreta");
+      } else if (r == "El usuario no existe") {
+        alert("Usuario não encontrado");
+      } else if (r == "Error del servidor") {
+        alert("Erro no servidor");
+      } else{console.log(r.jwt);
+      sessionStorage.setItem("JWT", r.jwt);
+      window.location.href = "tarefas.html";}
     });
 }
-
-
 
 if (formLogin) {
   formLogin.addEventListener("submit", logarUsuario);
@@ -134,7 +128,7 @@ if (formCadastro) {
 
 let novaTarefa = document.querySelector(".nova-tarefas");
 let formNovaTarefas = document.querySelector(".form-tarefas");
-let tarefaPedentes = document.querySelector(".tarefas-pendentes")
+let tarefaPedentes = document.querySelector(".tarefas-pendentes");
 
 function criarTarefa(e) {
   e.preventDefault();
@@ -143,21 +137,22 @@ function criarTarefa(e) {
     completed: false,
   };
 
-  fetch(`${API_URL}/tasks`, configuracoesComJwt("POST", body, sessionStorage.getItem("JWT")))
+  fetch(
+    `${API_URL}/tasks`,
+    configuracoesComJwt("POST", body, sessionStorage.getItem("JWT"))
+  )
     .then((r) => r.json())
     .then((r) => {
-      console.log(r)
-      let li = document.createElement("li")
-      li.innerText =`- ${r.description}`
-      tarefaPedentes.appendChild(li)
-      });
+      console.log(r);
+      let li = document.createElement("li");
+      li.innerText = `- ${r.description}`;
+      tarefaPedentes.appendChild(li);
+    });
 }
 
 if (formNovaTarefas) {
   formNovaTarefas.addEventListener("submit", criarTarefa);
 }
-
-
 
 // Deleter tarefa
 
@@ -191,24 +186,27 @@ function obterTarefa(id) {
 // Listar tarefas
 
 function listarTarefas(token) {
-  fetch(`${API_URL}/tasks`,authorization(token))
+  fetch(`${API_URL}/tasks`, authorization(token))
     .then((r) => r.json())
     .then((r) => {
-      console.log(r)
-    r.forEach(tarefa => {
-      let li = document.createElement("li")
-      li.innerText =`- ${tarefa.description}`
-      tarefaPedentes.appendChild(li)
-      
-    });});
+      console.log(r);
+      r.forEach((tarefa) => {
+        let btn = document.createElement("button")
+        let li = document.createElement("li");
+        li.classList.add("ativa")
+        li.innerText = `- ${tarefa.description}`;
+        // li.innerHTML += "   <button class= 'finalizar'>X</button>"
+        tarefaPedentes.appendChild(li);
+      });
+    });
 }
 
-listarTarefas(sessionStorage.getItem("JWT"))
-
+if(formNovaTarefas){
+listarTarefas(sessionStorage.getItem("JWT"));}
 
 // Obter informações de usuário
 
-let nomeUsuario = document.querySelector(".nomeUsuario")
+let nomeUsuario = document.querySelector(".nomeUsuario");
 
 function authorization(token) {
   let getMe = {
@@ -216,19 +214,18 @@ function authorization(token) {
       authorization: `${token}`,
     },
   };
-   return getMe}
-
+  return getMe;
+}
 
 function informacoesUsuario(token) {
   fetch(`${API_URL}/users/getMe`, authorization(token))
-    .then((r) => r.json())
+    .then((r) => r.json()) 
     .then((r) => {
-      console.log(r)
+      console.log(r);
       nomeUsuario.innerText = r.firstName;
     });
 }
 
-
-informacoesUsuario(sessionStorage.getItem("JWT"))
-
+if(formNovaTarefas){
+informacoesUsuario(sessionStorage.getItem("JWT"));}
 

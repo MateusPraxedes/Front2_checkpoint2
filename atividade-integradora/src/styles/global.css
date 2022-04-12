@@ -92,8 +92,8 @@ input {
   margin-left: 20px;
   list-style: none;
   height: 32px;
-  /* gap: 1450px; */
-  gap: 1170px;
+  gap: 1450px;
+  /* gap: 1170px; */
 }
 
 .nomeUsuario {
@@ -169,4 +169,14 @@ input {
   font-size: 29px;
   font-weight: bold;
   margin-top: 20px;
+}
+
+.finalizar{
+  color: rgb(185, 22, 22);
+  font-weight: bold;
+  height: 30px;
+  width: 50px;
+  background-color: rgb(72, 69, 69);
+  border-radius: 50px;
+
 }
