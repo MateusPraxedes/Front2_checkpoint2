@@ -8,9 +8,13 @@
   box-sizing: border-box;
 }
 
+html{
+  font-size: 62.5%;
+}
+
 body {
   /* background-color: rgb(60, 59, 59); */
-  font-size: 16px;
+  font-size: 1.6rem;
   background-image: url("https://miro.medium.com/max/1400/1*a2a7mb3U47iw5SwWtoL7FQ.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,6 +26,7 @@ body {
 }
 main {
   display: flex;
+  
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
@@ -32,21 +37,21 @@ main {
   position: relative;
   color: white;
   /* background-color: rgb(26, 25, 27); */
-  padding: 24px;
-  width: 404px;
-  margin-left: 12px;
-  border-radius: 10px;
+  padding: 2.4rem;
+  width: 40.4rem;
+  margin-left: 1.2rem;
+  border-radius: 1.0rem;
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1.2rem;
   background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 7px;
+  border-radius: 0.7rem;
 }
 
 input {
-  border-radius: 12px;
-  height: 28px;
+  border-radius: 1.2rem;
+  height: 2.8rem;
 }
 
 /* .btn_div {
@@ -57,11 +62,11 @@ input {
 } */
 
 .btn {
-  width: 150px;
-  height: 28px;
+  width: 15.0rem;
+  height: 2.8rem;
   color: white;
   background-color: rgb(30, 134, 219);
-  border-radius: 50px;
+  border-radius: 5.0rem;
 }
 
 .ingressar a {
@@ -89,27 +94,27 @@ input {
 
 .main-header nav ul {
   display: flex;
-  margin-left: 20px;
+  margin-left: 2.0rem;
   list-style: none;
-  height: 32px;
-  gap: 1450px;
-  /* gap: 1170px; */
+  height: 3.2rem;
+  /* gap: 145.0rem; */
+  gap: 117.0rem;
 }
 
 .nomeUsuario {
-  font-size: 14px;
+  font-size: 1.4rem;
   color: rgb(30, 134, 219);
   font-weight: bold;
-  margin-top: 6px;
+  margin-top: 0.6rem;
 }
 
 .btn-finalizar {
   color: white;
-  margin-top: 1px;
-  width: 150px;
-  height: 28px;
+  margin-top: 0.1rem;
+  width: 15.0rem;
+  height: 2.8rem;
   background-color: rgb(241, 38, 16);
-  border-radius: 50px;
+  border-radius: 5.0rem;
 }
 
 .main-header a {
@@ -126,8 +131,8 @@ input {
 }
 
 .form-tarefas input {
-  margin-top: 32px;
-  width: 600px;
+  margin-top: 3.2rem;
+  width: 60.0rem;
 }
 
 .form-tarefas input::placeholder {
@@ -136,47 +141,113 @@ input {
 }
 
 .material-icons-outlined {
-  color: rgb(30, 134, 219);
+  color: #1e86db;
   font-weight: bold;
-  height: 28px;
+  height: 2.8rem;
   margin: 0 auto;
   align-items: center;
   /* border-radius: 40px; */
-  margin-top: 32px;
+  margin-top: 3.2rem;
 }
 
 .not-done {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 0.2rem;
 }
 
 .tarefas {
   color: rgb(246, 243, 249);
   display: flex;
-  gap: 700px;
-  margin-top: 24px;
-  margin-left: 62px;
+  gap: 16.8rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   font-weight: bold;
+  margin-top: 5.0rem;
 }
 
 
 .tarefas-pendentes{
   list-style: none;
+  align-items: center;
 }
-.tarefas-pendentes li {
-  color: rgb(30, 134, 219);
-  font-size: 29px;
-  font-weight: bold;
-  margin-top: 20px;
-}
+
+
 
 .finalizar{
   color: rgb(185, 22, 22);
   font-weight: bold;
-  height: 30px;
-  width: 50px;
+  height: 3.0rem;
+  width: 5.0rem;
   background-color: rgb(72, 69, 69);
-  border-radius: 50px;
+  border-radius: 5.0rem;
 
+}
+
+.tarefa-pedente{
+  display: flex;
+  gap: 1.4rem;
+  align-items: center;
+  margin-top: 2.0rem;
+  /* background-color: rgb(19, 18, 18); */
+}
+
+.tarefa-pedente li{
+  color: #1e86db;
+  font-size: 2.8rem;
+  font-weight: bold;
+   /* margin-top: 2.0rem; */
+}
+
+.tarefa-pedente button{ 
+  height: 2.8rem;
+  width: 8.0rem;
+  text-align: center;
+  border-radius: 5.0rem;
+}
+
+.remover{
+  color: white;
+  background-color: rgb(209, 42, 42);
+
+}
+
+.concluida{
+  font-size: 2.0rem;
+  color: green;
+}
+
+
+.tarefa-concluida{
+  display: flex;
+  gap: 1.4rem;
+  align-items: center;
+  list-style: none;
+  align-items: center;
+  margin-top: 2.0rem;
+}
+
+.tarefa-concluida li{
+  font-size: 2.4rem;
+  text-decoration: line-through
+}
+
+.tarefa-concluida button{ 
+  height: 2.8rem;
+  width: 8.0rem;
+  text-align: center;
+  border-radius: 50px;
+}
+
+@media only screen and (max-width: 95rem){
+    html{
+      font-size: 60%;
+    }
+}
+
+@media only screen and (max-width: 65rem){
+  html{
+    font-size: 58%;
+  }
 }

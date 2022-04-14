@@ -62,16 +62,18 @@ function logarUsuario(e) {
   fetch(`${API_URL}/users/login`, configuracoesSemJwt("POST", body))
     .then((r) => r.json())
     .then((r) => {
-      console.log(r)
+      console.log(r);
       if (r == "Contraseña incorrecta") {
         alert("Senha incorreta");
       } else if (r == "El usuario no existe") {
         alert("Usuario não encontrado");
       } else if (r == "Error del servidor") {
         alert("Erro no servidor");
-      } else{console.log(r.jwt);
-      sessionStorage.setItem("JWT", r.jwt);
-      window.location.href = "tarefas.html";}
+      } else {
+        console.log(r.jwt);
+        sessionStorage.setItem("JWT", r.jwt);
+        window.location.href = "tarefas.html";
+      }
     });
 }
 
@@ -129,9 +131,62 @@ if (formCadastro) {
 let novaTarefa = document.querySelector(".nova-tarefas");
 let formNovaTarefas = document.querySelector(".form-tarefas");
 let tarefaPedentes = document.querySelector(".tarefas-pendentes");
+let tarefaConcluida = document.querySelector(".tarefas-terminadas");
+
+function criarElemento(nome) {
+  let elemento = document.createElement(nome);
+  return elemento;
+}
+
+function escopoTarefaConcluida(liPedente, id, tarefa, estado) {
+  let divTarefaConcluida = criarElemento("div");
+  divTarefaConcluida.classList.add("tarefa-concluida");
+  let liConcluida = criarElemento("li")
+  liConcluida = liPedente;
+  let btnReverter = criarElemento("button");
+  btnReverter.classList.add("reverter");
+  btnReverter.innerText = "reverter";
+  tarefaConcluida.appendChild(divTarefaConcluida);
+  divTarefaConcluida .appendChild(liConcluida);
+  divTarefaConcluida .appendChild(btnReverter);
+  AtualizarTarefa(id, tarefa, estado);
+  
+}
+
+function escopoTarefaPendente(tarefa, id) {
+  let div = criarElemento("div");
+  div.classList.add("tarefa-pedente");
+  let li = criarElemento("li");
+  let btnRemover = criarElemento("button");
+  btnRemover.classList.add("remover");
+  let btnConcluida = criarElemento("button");
+  btnConcluida.classList.add("concluida");
+  btnRemover.innerText = "Remover";
+  btnConcluida.innerText = "✔";
+  tarefaPedentes.appendChild(div);
+  div.appendChild(li);
+  div.appendChild(btnRemover);
+  div.appendChild(btnConcluida);
+  li.innerText = tarefa;
+  btnConcluida.addEventListener("click", function (e) {
+    escopoTarefaConcluida(li, id, tarefa, true)
+    e.target.remove();
+    btnRemover.remove();
+  });
+  btnRemover.addEventListener("click", function (e) {
+    console.log(e.target.innerText);
+    console.log(id);
+    deletarTarefa(id, sessionStorage.getItem("JWT"));
+    e.target.remove();
+    li.remove();
+    btnConcluida.remove();
+});
+
+}
 
 function criarTarefa(e) {
   e.preventDefault();
+  if(novaTarefa.value !== ""){ 
   let body = {
     description: novaTarefa.value,
     completed: false,
@@ -144,41 +199,41 @@ function criarTarefa(e) {
     .then((r) => r.json())
     .then((r) => {
       console.log(r);
-      let li = document.createElement("li");
-      li.innerText = `- ${r.description}`;
-      tarefaPedentes.appendChild(li);
-    });
+      escopoTarefaPendente(r.description);
+      location.reload()
+    });}
 }
 
 if (formNovaTarefas) {
   formNovaTarefas.addEventListener("submit", criarTarefa);
 }
 
-// Deleter tarefa
-
-function deletarTarefa(id) {
-  fetch(`${API_URL}/tasks{${id}}`)
-    .then((r) => r.json())
-    .then((r) => console.log(r));
-}
-
 // Atualizar uma tarefa existente
 
-function AtualizarTarefa(id) {
+function AtualizarTarefa(id, tarefa, estado) {
   let body = {
-    description: novaTarefa.value,
-    completed: false,
+    description: tarefa,
+    completed: estado,
   };
 
-  fetch(`${API_URL}/tasks{${id}}`, configuracoesComJwt("PUT", body))
+  fetch(
+    `${API_URL}/tasks/${id}`,
+    configuracoesComJwt("PUT", body, sessionStorage.getItem("JWT"))
+  )
     .then((r) => r.json())
-    .then((r) => console.log(r));
+    .then((r) =>{console.log(r)
+    location.reload()});
 }
 
 // Obter um determinada tarefa
 
-function obterTarefa(id) {
-  fetch(`${API_URL}/tasks{${id}}`)
+function obterTarefa(id, token) {
+  fetch(`${API_URL}/tasks/${id}`, {
+    headers: {
+      authorization: `${token}`,
+      "Content-type": "application/json",
+    },
+  })
     .then((r) => r.json())
     .then((r) => console.log(r));
 }
@@ -191,18 +246,33 @@ function listarTarefas(token) {
     .then((r) => {
       console.log(r);
       r.forEach((tarefa) => {
-        let btn = document.createElement("button")
-        let li = document.createElement("li");
-        li.classList.add("ativa")
-        li.innerText = `- ${tarefa.description}`;
-        // li.innerHTML += "   <button class= 'finalizar'>X</button>"
-        tarefaPedentes.appendChild(li);
+        if (tarefa.completed == false) {
+          escopoTarefaPendente(tarefa.description, tarefa.id);
+          console.log(tarefa);
+        }
+        if (tarefa.completed == true) {
+          let div = criarElemento("div");
+          div.classList.add("tarefa-concluida");
+          let liConcluida = criarElemento("li")
+          liConcluida.innerText = tarefa.description;
+          let btnReverter = criarElemento("button");
+          btnReverter.classList.add("reverter");
+          btnReverter.innerText = "Reverter";
+          tarefaConcluida.appendChild(div);
+          div.appendChild(liConcluida);
+          div.appendChild(btnReverter);
+          btnReverter.addEventListener("click", e => {
+            AtualizarTarefa(tarefa.id, tarefa.description, false)
+          })
+
+        }  
       });
     });
 }
 
-if(formNovaTarefas){
-listarTarefas(sessionStorage.getItem("JWT"));}
+if (formNovaTarefas) {
+  listarTarefas(sessionStorage.getItem("JWT"));
+}
 
 // Obter informações de usuário
 
@@ -219,13 +289,27 @@ function authorization(token) {
 
 function informacoesUsuario(token) {
   fetch(`${API_URL}/users/getMe`, authorization(token))
-    .then((r) => r.json()) 
+    .then((r) => r.json())
     .then((r) => {
       console.log(r);
       nomeUsuario.innerText = r.firstName;
     });
 }
 
-if(formNovaTarefas){
-informacoesUsuario(sessionStorage.getItem("JWT"));}
+if (formNovaTarefas) {
+  informacoesUsuario(sessionStorage.getItem("JWT"));
+}
 
+// Deleter tarefa
+
+function deletarTarefa(id, token) {
+  fetch(`${API_URL}/tasks/${id}`, {
+    method: "DELETE",
+    headers: {
+      authorization: `${token}`,
+      "Content-type": "application/json",
+    },
+  })
+    .then((r) => r.json())
+    .then((r) => console.log(r));
+}
