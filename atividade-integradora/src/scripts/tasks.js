@@ -149,13 +149,9 @@ window.addEventListener("load", (e) => {
     li.innerText = tarefa;
     btnConcluida.addEventListener("click", function (e) {
       console.log(e);
-      // escopoTarefaConcluida(li, id, tarefa, true);
       AtualizarTarefa(id, tarefa, true);
-      e.target.remove();
-      btnRemover.remove();
     });
     btnRemover.addEventListener("click", function (e) {
-      console.log(id);
       deletarTarefa(id, sessionStorage.getItem("JWT"));
       e.target.remove();
       li.remove();

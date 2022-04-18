@@ -166,6 +166,7 @@ input {
 .tarefas {
   color: rgb(246, 243, 249);
   display: flex;
+  justify-content: center ;
   gap: 16.8rem;
   align-items: center;
   flex-wrap: wrap;
@@ -173,6 +174,7 @@ input {
   font-weight: bold;
   margin-top: 5.0rem;
 }
+
 
 
 .tarefas-pendentes{
