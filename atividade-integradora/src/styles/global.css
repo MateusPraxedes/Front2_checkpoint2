@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Material+Icons%7CMaterial+Icons+Outlined%7CMaterial+Icons+Two+Tone%7CMaterial+Icons+Round%7CMaterial+Icons+Sharp%27");
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
 * {
   padding: 0;
@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-html{
+html {
   font-size: 62.5%;
 }
 
@@ -18,7 +18,7 @@ body {
   background-image: url("https://miro.medium.com/max/1400/1*a2a7mb3U47iw5SwWtoL7FQ.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .title {
@@ -26,7 +26,7 @@ body {
 }
 main {
   display: flex;
-  
+
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
@@ -40,7 +40,7 @@ main {
   padding: 2.4rem;
   width: 40.4rem;
   margin-left: 1.2rem;
-  border-radius: 1.0rem;
+  border-radius: 1rem;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -62,11 +62,11 @@ input {
 } */
 
 .btn {
-  width: 15.0rem;
+  width: 15rem;
   height: 2.8rem;
   color: white;
   background-color: rgb(30, 134, 219);
-  border-radius: 5.0rem;
+  border-radius: 5rem;
 }
 
 .ingressar a {
@@ -94,10 +94,10 @@ input {
 
 .main-header nav ul {
   display: flex;
-  margin-left: 2.0rem;
+  margin-left: 2rem;
   list-style: none;
   height: 3.2rem;
-  gap: 35.0rem;
+  gap: 35rem;
 }
 
 .nome-usuario {
@@ -117,10 +117,10 @@ input {
 .btn-finalizar {
   color: white;
   margin-top: 0.1rem;
-  width: 15.0rem;
+  width: 15rem;
   height: 2.8rem;
   background-color: rgb(241, 38, 16);
-  border-radius: 5.0rem;
+  border-radius: 5rem;
 }
 
 .main-header a {
@@ -139,7 +139,7 @@ input {
 .form-tarefas input {
   margin-top: 3.2rem;
   height: 3.4rem;
-  width: 60.0rem;
+  width: 60rem;
 }
 
 .form-tarefas input::placeholder {
@@ -150,14 +150,14 @@ input {
 .material-icons-outlined {
   color: #1e86db;
   font-weight: bold;
-  height: 2.8rem;
+  height: 3.2rem;
   margin: 0 auto;
   align-items: center;
   /* border-radius: 40px; */
   margin-top: 3.2rem;
 }
 
-.not-done {
+.div-form {
   display: flex;
   align-items: center;
   gap: 0.2rem;
@@ -166,97 +166,93 @@ input {
 .tarefas {
   color: rgb(246, 243, 249);
   display: flex;
-  justify-content: center ;
+  flex-grow: 1;
+  align-content: stretch;
+  justify-content: center;
+  text-align: center;
   gap: 16.8rem;
-  align-items: center;
   flex-wrap: wrap;
   justify-content: center;
   font-weight: bold;
-  margin-top: 5.0rem;
+  margin-top: 5rem;
 }
 
-
-
-.tarefas-pendentes{
+.tarefas-pendentes {
   list-style: none;
   align-items: center;
 }
 
-
-
-.finalizar{
+.finalizar {
   color: rgb(185, 22, 22);
   font-weight: bold;
-  height: 3.0rem;
-  width: 5.0rem;
+  height: 3rem;
+  width: 5rem;
   background-color: rgb(72, 69, 69);
-  border-radius: 5.0rem;
-
+  border-radius: 5rem;
 }
 
-.tarefa-pedente{
+.tarefa-pedente {
   display: flex;
   gap: 1.4rem;
   align-items: center;
-  margin-top: 2.0rem;
+  margin-top: 2rem;
   /* background-color: rgb(19, 18, 18); */
 }
 
-.tarefa-pedente li{
+.tarefa-pedente li {
   color: #1e86db;
   font-size: 2.8rem;
   font-weight: bold;
-   /* margin-top: 2.0rem; */
-}
-
-.tarefa-pedente button{ 
-  height: 2.8rem;
-  width: 8.0rem;
   text-align: center;
-  border-radius: 5.0rem;
+  /* margin-top: 2.0rem; */
 }
 
-.remover{
+.tarefa-pedente button {
+  height: 2.8rem;
+  width: 8rem;
+  text-align: center;
+  border-radius: 5rem;
+}
+
+.remover {
   color: white;
   background-color: rgb(209, 42, 42);
-
 }
 
-.concluida{
-  font-size: 2.0rem;
+.concluida {
+  font-size: 2rem;
   color: green;
 }
 
-
-.tarefa-concluida{
+.tarefa-concluida {
+  list-style: none;
   display: flex;
   gap: 1.4rem;
   align-items: center;
-  list-style: none;
-  align-items: center;
-  margin-top: 2.0rem;
+  margin-top: 2rem;
 }
 
-.tarefa-concluida li{
+.tarefa-concluida li {
   font-size: 2.4rem;
-  text-decoration: line-through
+  text-decoration: line-through;
+  text-align: center;
 }
 
-.tarefa-concluida button{ 
+.tarefa-concluida button {
   height: 2.8rem;
-  width: 8.0rem;
+  width: 8rem;
   text-align: center;
   border-radius: 50px;
 }
 
-@media only screen and (max-width: 95rem){
-    html{
-      font-size: 60%;
-    }
+@media only screen and (max-width: 95rem) {
+  html {
+    font-size: 60%;
+  }
 }
 
-@media only screen and (max-width: 65rem){
-  html{
+@media only screen and (max-width: 65rem) {
+  html {
     font-size: 58%;
   }
 }
