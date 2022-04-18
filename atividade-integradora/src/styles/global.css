@@ -97,11 +97,17 @@ input {
   margin-left: 2.0rem;
   list-style: none;
   height: 3.2rem;
-  /* gap: 145.0rem; */
-  gap: 117.0rem;
+  gap: 35.0rem;
 }
 
-.nomeUsuario {
+.nome-usuario {
+  font-size: 1.4rem;
+  color: rgb(30, 134, 219);
+  font-weight: bold;
+  margin-top: 0.6rem;
+}
+
+.email-usuario {
   font-size: 1.4rem;
   color: rgb(30, 134, 219);
   font-weight: bold;
