@@ -298,7 +298,6 @@ window.addEventListener("load", (e) => {
   }
 
   // Deleter tarefa
-
   
   function deletarTarefa(id, token) {
     fetch(`${API_URL}/tasks/${id}`, {
