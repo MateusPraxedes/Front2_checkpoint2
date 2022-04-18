@@ -132,20 +132,6 @@ window.addEventListener("load", (e) => {
   let tarefaPedentes = document.querySelector(".tarefas-pendentes");
   let tarefaConcluida = document.querySelector(".tarefas-terminadas");
 
-  function escopoTarefaConcluida(liPedente, id, tarefa, estado) {
-    let divTarefaConcluida = document.createElement("div");
-    divTarefaConcluida.classList.add("tarefa-concluida");
-    let liConcluida = document.createElement("li");
-    liConcluida = liPedente;
-    let btnReverter = document.createElement("button");
-    btnReverter.classList.add("reverter");
-    btnReverter.innerText = "reverter";
-    tarefaConcluida.appendChild(divTarefaConcluida);
-    divTarefaConcluida.appendChild(liConcluida);
-    divTarefaConcluida.appendChild(btnReverter);
-    AtualizarTarefa(id, tarefa, estado);
-  }
-
   function escopoTarefaPendente(tarefa, id) {
     let div = document.createElement("div");
     div.classList.add("tarefa-pedente");
@@ -163,7 +149,8 @@ window.addEventListener("load", (e) => {
     li.innerText = tarefa;
     btnConcluida.addEventListener("click", function (e) {
       console.log(e);
-      escopoTarefaConcluida(li, id, tarefa, true);
+      // escopoTarefaConcluida(li, id, tarefa, true);
+      AtualizarTarefa(id, tarefa, true);
       e.target.remove();
       btnRemover.remove();
     });
@@ -272,7 +259,7 @@ window.addEventListener("load", (e) => {
   // Obter informações de usuário
 
   let nomeUsuario = document.querySelector(".nome-usuario");
-  let emailUsuario = document.querySelector(".email-usuario"); 
+  let emailUsuario = document.querySelector(".email-usuario");
   function authorization(token) {
     let getMe = {
       headers: {
@@ -288,8 +275,7 @@ window.addEventListener("load", (e) => {
       .then((r) => {
         console.log(r);
         nomeUsuario.innerText = `${r.firstName} ${r.lastName}`;
-        emailUsuario.innerText = `${r.email}`
-
+        emailUsuario.innerText = `${r.email}`;
       });
   }
 
@@ -298,7 +284,7 @@ window.addEventListener("load", (e) => {
   }
 
   // Deleter tarefa
-  
+
   function deletarTarefa(id, token) {
     fetch(`${API_URL}/tasks/${id}`, {
       method: "DELETE",
