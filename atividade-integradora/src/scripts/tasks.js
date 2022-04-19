@@ -118,7 +118,22 @@ window.addEventListener("load", (e) => {
 
     fetch(`${API_URL}/users`, configuracoesSemJwt("POST", body))
       .then((r) => r.json())
-      .then((r) => console.log(r));
+      .then((r) => {
+        console.log(r);
+        if (
+          r == "El usuario ya se encuentra registrado" ||
+          r == "Alguno de los datos requeridos está incompleto"
+        ) {
+          alert(
+            "O usuário já está cadastrado/ Alguns dos dados necessários estão incompletos"
+          );
+        } else if (r == "Error del servidor") {
+          alert("Erro de servidor");
+        } else if (r.jwt) {
+          alert("Usuário cadastrado com sucesso");
+          window.location.href = "index.html";
+        }
+      });
   }
 
   if (formCadastro) {
@@ -236,7 +251,7 @@ window.addEventListener("load", (e) => {
             liConcluida.innerText = tarefa.description;
             let btnReverter = document.createElement("button");
             btnReverter.classList.add("reverter");
-            btnReverter.innerHTML = "Reverter";
+            btnReverter.innerText = "Reverter";
             tarefaConcluida.appendChild(div);
             div.appendChild(liConcluida);
             div.appendChild(btnReverter);

@@ -94,6 +94,7 @@ input {
 
 .main-header nav ul {
   display: flex;
+  align-content: stretch;
   margin-left: 2rem;
   list-style: none;
   height: 3.2rem;
