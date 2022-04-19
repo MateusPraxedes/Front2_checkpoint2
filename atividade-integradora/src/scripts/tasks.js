@@ -179,6 +179,7 @@ window.addEventListener("load", () => {
       e.target.remove();
       li.remove();
       btnConcluida.remove();
+      span.remove()
     });
   }
 
