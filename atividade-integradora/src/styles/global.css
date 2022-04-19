@@ -98,7 +98,7 @@ input {
   margin-left: 2rem;
   list-style: none;
   height: 3.2rem;
-  gap: 35rem;
+  gap: 55rem;
 }
 
 .nome-usuario {
@@ -246,6 +246,9 @@ input {
   width: 8rem;
   text-align: center;
   border-radius: 50px;
+}
+span{
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 95rem) {
