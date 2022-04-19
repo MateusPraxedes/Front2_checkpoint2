@@ -159,10 +159,7 @@ window.addEventListener("load", () => {
     btnRemover.innerText = "Remover";
     btnConcluida.innerText = "✔";
     let span = document.createElement("span");
-    let dataCriacao = data
-      .replace(/\T/g, " ")
-      .replace(/\Z/g, "")
-      .replace(/\.\d{3}/g, "");
+    let dataCriacao = new Date(data);
     span.innerText = dataCriacao;
     tarefaPedentes.appendChild(div);
     div.appendChild(li);
@@ -263,10 +260,7 @@ window.addEventListener("load", () => {
             let liConcluida = document.createElement("li");
             liConcluida.innerText = tarefa.description;
             let span = document.createElement("span");
-            let dataCriacao = tarefa.createdAt
-              .replace(/\T/g, " ")
-              .replace(/\Z/g, "")
-              .replace(/\.\d{3}/g, "");
+            let dataCriacao = new Date(tarefa.createdAt);
             span.innerText = dataCriacao;
             let btnReverter = document.createElement("button");
             btnReverter.classList.add("reverter");
