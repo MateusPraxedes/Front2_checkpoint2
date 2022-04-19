@@ -262,7 +262,10 @@ window.addEventListener("load", () => {
             let liConcluida = document.createElement("li");
             liConcluida.innerText = tarefa.description;
             let span = document.createElement("span");
-            let dataCriacao = tarefa.createdAt.replace(/\T/g, " ").replace(/\Z/g, "").replace(/\.\d{3}/g, "");
+            let dataCriacao = tarefa.createdAt
+              .replace(/\T/g, " ")
+              .replace(/\Z/g, "")
+              .replace(/\.\d{3}/g, "");
             span.innerText = dataCriacao;
             let btnReverter = document.createElement("button");
             btnReverter.classList.add("reverter");
