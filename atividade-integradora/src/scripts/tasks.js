@@ -88,9 +88,8 @@ window.addEventListener("load", (e) => {
   let sobrenome = document.querySelector("#sobrenome");
   let emailCadastro = document.querySelector("#email_cadastro");
   let senhaCadastro = document.querySelector("#senha_cadastro");
-  let btnCriarConta = document.querySelector(".criarConta");
   let formCadastro = document.querySelector(".form_cadastro");
-
+  
   function criarUsuario(e) {
     e.preventDefault();
     console.log(e);
