@@ -61,19 +61,21 @@ window.addEventListener("load", () => {
       .then((r) => r.json())
       .then((r) => {
         console.log(r);
-        if (r == "Contraseña incorrecta") {
-          alert("Senha incorreta");
-          ul.innerHTML = "";
-        } else if (r == "El usuario no existe") {
-          alert("Usuario não encontrado");
-          ul.innerHTML = "";
-        } else if (r == "Error del servidor") {
-          alert("Erro no servidor");
-          ul.innerHTML = "";
-        } else {
-          console.log(r.jwt);
-          sessionStorage.setItem("JWT", r.jwt);
-          window.location.href = "tarefas.html";
+        if (email.value !== "" && senha.value !== "") {
+          if (r == "Contraseña incorrecta") {
+            alert("Senha incorreta");
+            ul.innerHTML = "";
+          } else if (r == "El usuario no existe") {
+            alert("Usuario não encontrado");
+            ul.innerHTML = "";
+          } else if (r == "Error del servidor") {
+            alert("Erro no servidor");
+            ul.innerHTML = "";
+          } else {
+            console.log(r.jwt);
+            sessionStorage.setItem("JWT", r.jwt);
+            window.location.href = "tarefas.html";
+          }
         }
       });
   }
@@ -176,7 +178,7 @@ window.addEventListener("load", () => {
       e.target.remove();
       li.remove();
       btnConcluida.remove();
-      span.remove()
+      span.remove();
     });
   }
 
