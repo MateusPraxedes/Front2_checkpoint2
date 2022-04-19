@@ -236,7 +236,7 @@ window.addEventListener("load", (e) => {
             liConcluida.innerText = tarefa.description;
             let btnReverter = document.createElement("button");
             btnReverter.classList.add("reverter");
-            btnReverter.innerText = "Reverter";
+            btnReverter.innerHTML = "Reverter";
             tarefaConcluida.appendChild(div);
             div.appendChild(liConcluida);
             div.appendChild(btnReverter);
