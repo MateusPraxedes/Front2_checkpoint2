@@ -4,7 +4,7 @@ let formLogin = document.querySelector(".form_login");
 let body = document.querySelector("body");
 let btn = document.querySelector("#btn");
 
-window.addEventListener("load", (e) => {
+window.addEventListener("load", () => {
   const API_URL = "https://ctd-todo-api.herokuapp.com/v1";
 
   function messagemDeErro() {
@@ -89,7 +89,7 @@ window.addEventListener("load", (e) => {
   let emailCadastro = document.querySelector("#email_cadastro");
   let senhaCadastro = document.querySelector("#senha_cadastro");
   let formCadastro = document.querySelector(".form_cadastro");
-  
+
   function criarUsuario(e) {
     e.preventDefault();
     console.log(e);
@@ -148,7 +148,7 @@ window.addEventListener("load", (e) => {
   let tarefaPedentes = document.querySelector(".tarefas-pendentes");
   let tarefaConcluida = document.querySelector(".tarefas-terminadas");
 
-  function escopoTarefaPendente(tarefa, id) {
+  function escopoTarefaPendente(tarefa, id, data) {
     let div = document.createElement("div");
     div.classList.add("tarefa-pedente");
     let li = document.createElement("li");
@@ -158,8 +158,15 @@ window.addEventListener("load", (e) => {
     btnConcluida.classList.add("concluida");
     btnRemover.innerText = "Remover";
     btnConcluida.innerText = "✔";
+    let span = document.createElement("span");
+    let dataCriacao = data
+      .replace(/\T/g, " ")
+      .replace(/\Z/g, "")
+      .replace(/\.\d{3}/g, "");
+    span.innerText = dataCriacao;
     tarefaPedentes.appendChild(div);
     div.appendChild(li);
+    div.appendChild(span);
     div.appendChild(btnConcluida);
     div.appendChild(btnRemover);
     li.innerText = tarefa;
@@ -189,7 +196,7 @@ window.addEventListener("load", (e) => {
         .then((r) => r.json())
         .then((r) => {
           console.log(r);
-          escopoTarefaPendente(r.description);
+          escopoTarefaPendente(r.description, r.id, r.createdAt);
           listarTarefas(sessionStorage.getItem("JWT"));
           novaTarefa.value = "";
         });
@@ -243,18 +250,26 @@ window.addEventListener("load", (e) => {
         console.log(r);
         r.forEach((tarefa) => {
           if (tarefa.completed == false) {
-            escopoTarefaPendente(tarefa.description, tarefa.id);
+            escopoTarefaPendente(
+              tarefa.description,
+              tarefa.id,
+              tarefa.createdAt
+            );
           }
           if (tarefa.completed == true) {
             let div = document.createElement("div");
             div.classList.add("tarefa-concluida");
             let liConcluida = document.createElement("li");
             liConcluida.innerText = tarefa.description;
+            let span = document.createElement("span");
+            let dataCriacao = tarefa.createdAt.replace(/\T/g, " ").replace(/\Z/g, "").replace(/\.\d{3}/g, "");
+            span.innerText = dataCriacao;
             let btnReverter = document.createElement("button");
             btnReverter.classList.add("reverter");
             btnReverter.innerText = "Reverter";
             tarefaConcluida.appendChild(div);
             div.appendChild(liConcluida);
+            div.appendChild(span);
             div.appendChild(btnReverter);
             btnReverter.addEventListener("click", () =>
               AtualizarTarefa(tarefa.id, tarefa.description, false)
