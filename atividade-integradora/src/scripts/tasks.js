@@ -7,7 +7,7 @@ let btn = document.querySelector("#btn");
 window.addEventListener("load", (e) => {
   const API_URL = "https://ctd-todo-api.herokuapp.com/v1";
 
-  function criarli() {
+  function messagemDeErro() {
     let li = document.createElement("li");
     ul.appendChild(li);
     li.classList.add("erro");
@@ -42,15 +42,14 @@ window.addEventListener("load", (e) => {
 
   function logarUsuario(e) {
     e.preventDefault();
-    // console.log(e)
     ul.innerHTML = "";
     if (email) {
       formLogin.appendChild(ul);
       if (email.value === "") {
-        criarli().innerText = "Email não preenchido";
+        messagemDeErro().innerText = "Email não preenchido";
       }
       if (senha.value === "") {
-        criarli().innerText = "Senha não preenchida";
+        messagemDeErro().innerText = "Senha não preenchida";
       }
     }
     let body = {
@@ -64,10 +63,13 @@ window.addEventListener("load", (e) => {
         console.log(r);
         if (r == "Contraseña incorrecta") {
           alert("Senha incorreta");
+          ul.innerHTML = "";
         } else if (r == "El usuario no existe") {
           alert("Usuario não encontrado");
+          ul.innerHTML = "";
         } else if (r == "Error del servidor") {
           alert("Erro no servidor");
+          ul.innerHTML = "";
         } else {
           console.log(r.jwt);
           sessionStorage.setItem("JWT", r.jwt);
@@ -96,16 +98,16 @@ window.addEventListener("load", (e) => {
     if (emailCadastro) {
       formCadastro.appendChild(ul);
       if (nome.value === "") {
-        criarli().innerText = "Nome não preenchido";
+        messagemDeErro().innerText = "Nome não preenchido";
       }
       if (sobrenome.value === "") {
-        criarli().innerText = "Sobrenome não preenchido";
+        messagemDeErro().innerText = "Sobrenome não preenchido";
       }
       if (emailCadastro.value === "") {
-        criarli().innerText = "Email não preenchido";
+        messagemDeErro().innerText = "Email não preenchido";
       }
       if (senhaCadastro.value === "") {
-        criarli().innerText = "Senha não preenchida";
+        messagemDeErro().innerText = "Senha não preenchida";
       }
     }
 

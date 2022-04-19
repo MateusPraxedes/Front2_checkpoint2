@@ -110,17 +110,17 @@ input {
 
 .email-usuario {
   font-size: 1.4rem;
-  color: rgb(30, 134, 219);
+  color: #1e86db;
   font-weight: bold;
   margin-top: 0.6rem;
 }
 
 .btn-finalizar {
-  color: white;
+  color: #ffffff;
   margin-top: 0.1rem;
   width: 15rem;
   height: 2.8rem;
-  background-color: rgb(241, 38, 16);
+  background-color: #f12610;
   border-radius: 5rem;
 }
 
@@ -235,6 +235,7 @@ input {
 
 .tarefa-concluida li {
   font-size: 2.4rem;
+  color: #1e86db;
   text-decoration: line-through;
   text-align: center;
 }
