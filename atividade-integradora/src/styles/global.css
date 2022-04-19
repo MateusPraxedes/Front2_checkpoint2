@@ -35,7 +35,7 @@ main {
 
 .cadastroLogin {
   position: relative;
-  color: white;
+  color: #ffffff;
   /* background-color: rgb(26, 25, 27); */
   padding: 2.4rem;
   width: 40.4rem;
@@ -45,7 +45,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: #00000066;
   border-radius: 0.7rem;
 }
 
@@ -65,18 +65,18 @@ input {
   width: 15rem;
   height: 2.8rem;
   color: white;
-  background-color: rgb(30, 134, 219);
+  background-color: #1e86db;
   border-radius: 5rem;
 }
 
 .ingressar a {
-  color: white;
+  color: #ffffff;
   /* text-decoration: none; */
 }
 
 .erro {
   list-style: none;
-  color: rgb(16, 133, 216);
+  color: #1085d8;
   font-weight: bold;
 }
 
@@ -103,7 +103,7 @@ input {
 
 .nome-usuario {
   font-size: 1.4rem;
-  color: rgb(30, 134, 219);
+  color: #1e86db;
   font-weight: bold;
   margin-top: 0.6rem;
 }
@@ -165,7 +165,7 @@ input {
 }
 
 .tarefas {
-  color: rgb(246, 243, 249);
+  color: #f6f3f9;
   display: flex;
   flex-grow: 1;
   align-content: stretch;
@@ -184,11 +184,11 @@ input {
 }
 
 .finalizar {
-  color: rgb(185, 22, 22);
+  color: #b91616;
   font-weight: bold;
   height: 3rem;
   width: 5rem;
-  background-color: rgb(72, 69, 69);
+  background-color: #484545;
   border-radius: 5rem;
 }
 
@@ -216,13 +216,14 @@ input {
 }
 
 .remover {
-  color: white;
-  background-color: rgb(209, 42, 42);
+  color: #ffffff;
+  background-color: #d12a2a;
 }
 
 .concluida {
   font-size: 2rem;
-  color: green;
+  color: #ffffff;
+  background-color: #008000;
 }
 
 .tarefa-concluida {
